@@ -346,3 +346,59 @@ uint16_t R200::arrayToUint16(uint8_t *array){
   value += *(array+1);
   return value;
 }
+
+void R200::sendCustomCommand() const {
+  uint8_t commandFrame[26] = {0};
+
+  commandFrame[0] = 0xAA;
+  commandFrame[1] = 0x00;
+  commandFrame[2] = 0x0C;
+  commandFrame[3] = 0x00;
+  commandFrame[4] = 0x13;
+  commandFrame[5] = 0x01;
+  commandFrame[6] = 0x00;
+  commandFrame[7] = 0x00;
+  commandFrame[8] = 0x00;
+  commandFrame[9] = 0x20;
+  commandFrame[10] = 0x60;
+  commandFrame[11] = 0x00;
+  commandFrame[12] = 0x00;
+  commandFrame[13] = 0x00;
+  commandFrame[14] = 0x00;
+  commandFrame[15] = 0x00;
+  commandFrame[16] = 0x00;
+  commandFrame[17] = 0x00;
+  commandFrame[18] = 0x00;
+  commandFrame[19] = 0x00;
+  commandFrame[20] = 0x00;
+  commandFrame[21] = 0x00;
+  commandFrame[22] = 0x00;
+  commandFrame[23] = 0x01;
+  commandFrame[24] = 0xA1;
+  commandFrame[25] = 0xDD;
+
+  _serial->write(commandFrame, 26);
+}
+
+void R200::sendReadEPCCommand() const {
+  uint8_t commandFrame[16] = {0};
+
+  commandFrame[0] = 0xAA;
+  commandFrame[1] = 0x00;
+  commandFrame[2] = 0x39;
+  commandFrame[3] = 0x00;
+  commandFrame[4] = 0x09;
+  commandFrame[5] = 0x00;
+  commandFrame[6] = 0x00;
+  commandFrame[7] = 0x00;
+  commandFrame[8] = 0x00;
+  commandFrame[9] = 0x01;
+  commandFrame[10] = 0x00;
+  commandFrame[11] = 0x00;
+  commandFrame[12] = 0x00;
+  commandFrame[13] = 0x08;
+  commandFrame[14] = 0x4B;
+  commandFrame[15] = 0xDD;
+
+  _serial->write(commandFrame, 16);
+}

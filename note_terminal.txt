@@ -1,0 +1,3 @@
+ pio run --target upload --upload-port COM5
+ pio device monitor -b 115200 -p COM5
+ pio run --target erase --upload-port COM5

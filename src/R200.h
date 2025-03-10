@@ -39,6 +39,8 @@ class R200 {
     //bool newCardPresent();
     //bool isCardPresent();
     void dumpUIDToSerial();
+    void sendCustomCommand() const;
+    void sendReadEPCCommand() const;
 
 
 
